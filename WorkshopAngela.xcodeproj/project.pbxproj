@@ -1,0 +1,430 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4CB87C1932A6F3D94506EA14 /* Pods_WorkshopAngela.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D12D9BD437C6A9964AE687 /* Pods_WorkshopAngela.framework */; };
+		70E9908825853CE70073C7EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E9908725853CE70073C7EF /* AppDelegate.swift */; };
+		70E9908A25853CE70073C7EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E9908925853CE70073C7EF /* ViewController.swift */; };
+		70E9908D25853CE70073C7EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70E9908B25853CE70073C7EF /* Main.storyboard */; };
+		70E9909025853CE70073C7EF /* WorkshopAngela.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70E9908E25853CE70073C7EF /* WorkshopAngela.xcdatamodeld */; };
+		70E9909225853CEA0073C7EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70E9909125853CEA0073C7EF /* Assets.xcassets */; };
+		70E9909525853CEA0073C7EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70E9909325853CEA0073C7EF /* LaunchScreen.storyboard */; };
+		70F7B6A925892C6000D890FF /* KlientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F7B6A825892C6000D890FF /* KlientViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6734C369BB0A0578E6386830 /* Pods-WorkshopAngela.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkshopAngela.release.xcconfig"; path = "Target Support Files/Pods-WorkshopAngela/Pods-WorkshopAngela.release.xcconfig"; sourceTree = "<group>"; };
+		70E9908425853CE70073C7EF /* WorkshopAngela.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkshopAngela.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		70E9908725853CE70073C7EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		70E9908925853CE70073C7EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		70E9908C25853CE70073C7EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		70E9908F25853CE70073C7EF /* WorkshopAngela.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorkshopAngela.xcdatamodel; sourceTree = "<group>"; };
+		70E9909125853CEA0073C7EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		70E9909425853CEA0073C7EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		70E9909625853CEA0073C7EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70F7B6A825892C6000D890FF /* KlientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlientViewController.swift; sourceTree = "<group>"; };
+		85D12D9BD437C6A9964AE687 /* Pods_WorkshopAngela.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkshopAngela.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA6673FF70A5CA19EB3AF19C /* Pods-WorkshopAngela.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkshopAngela.debug.xcconfig"; path = "Target Support Files/Pods-WorkshopAngela/Pods-WorkshopAngela.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		70E9908125853CE70073C7EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CB87C1932A6F3D94506EA14 /* Pods_WorkshopAngela.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		25558375A42FE44FF9ADC163 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				85D12D9BD437C6A9964AE687 /* Pods_WorkshopAngela.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4262C824FD35DA9EB4E9BB34 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BA6673FF70A5CA19EB3AF19C /* Pods-WorkshopAngela.debug.xcconfig */,
+				6734C369BB0A0578E6386830 /* Pods-WorkshopAngela.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		70E9907B25853CE70073C7EF = {
+			isa = PBXGroup;
+			children = (
+				70E9908625853CE70073C7EF /* WorkshopAngela */,
+				70E9908525853CE70073C7EF /* Products */,
+				4262C824FD35DA9EB4E9BB34 /* Pods */,
+				25558375A42FE44FF9ADC163 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		70E9908525853CE70073C7EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				70E9908425853CE70073C7EF /* WorkshopAngela.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		70E9908625853CE70073C7EF /* WorkshopAngela */ = {
+			isa = PBXGroup;
+			children = (
+				70E9908725853CE70073C7EF /* AppDelegate.swift */,
+				70E9908925853CE70073C7EF /* ViewController.swift */,
+				70E9908B25853CE70073C7EF /* Main.storyboard */,
+				70F7B6A825892C6000D890FF /* KlientViewController.swift */,
+				70E9909125853CEA0073C7EF /* Assets.xcassets */,
+				70E9909325853CEA0073C7EF /* LaunchScreen.storyboard */,
+				70E9909625853CEA0073C7EF /* Info.plist */,
+				70E9908E25853CE70073C7EF /* WorkshopAngela.xcdatamodeld */,
+			);
+			path = WorkshopAngela;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		70E9908325853CE70073C7EF /* WorkshopAngela */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70E9909925853CEA0073C7EF /* Build configuration list for PBXNativeTarget "WorkshopAngela" */;
+			buildPhases = (
+				A8BD23402C404EE46BB1D7CE /* [CP] Check Pods Manifest.lock */,
+				70E9908025853CE70073C7EF /* Sources */,
+				70E9908125853CE70073C7EF /* Frameworks */,
+				70E9908225853CE70073C7EF /* Resources */,
+				2069EAB7EED1E4F80612C674 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WorkshopAngela;
+			productName = WorkshopAngela;
+			productReference = 70E9908425853CE70073C7EF /* WorkshopAngela.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		70E9907C25853CE70073C7EF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "Angela Tasikj";
+				TargetAttributes = {
+					70E9908325853CE70073C7EF = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 70E9907F25853CE70073C7EF /* Build configuration list for PBXProject "WorkshopAngela" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 70E9907B25853CE70073C7EF;
+			productRefGroup = 70E9908525853CE70073C7EF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				70E9908325853CE70073C7EF /* WorkshopAngela */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		70E9908225853CE70073C7EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70E9909525853CEA0073C7EF /* LaunchScreen.storyboard in Resources */,
+				70E9909225853CEA0073C7EF /* Assets.xcassets in Resources */,
+				70E9908D25853CE70073C7EF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2069EAB7EED1E4F80612C674 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WorkshopAngela/Pods-WorkshopAngela-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WorkshopAngela/Pods-WorkshopAngela-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WorkshopAngela/Pods-WorkshopAngela-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8BD23402C404EE46BB1D7CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WorkshopAngela-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		70E9908025853CE70073C7EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70E9908A25853CE70073C7EF /* ViewController.swift in Sources */,
+				70E9908825853CE70073C7EF /* AppDelegate.swift in Sources */,
+				70E9909025853CE70073C7EF /* WorkshopAngela.xcdatamodeld in Sources */,
+				70F7B6A925892C6000D890FF /* KlientViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		70E9908B25853CE70073C7EF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				70E9908C25853CE70073C7EF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		70E9909325853CEA0073C7EF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				70E9909425853CEA0073C7EF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		70E9909725853CEA0073C7EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		70E9909825853CEA0073C7EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		70E9909A25853CEA0073C7EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA6673FF70A5CA19EB3AF19C /* Pods-WorkshopAngela.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WorkshopAngela/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = amu.WorkshopAngela;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		70E9909B25853CEA0073C7EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6734C369BB0A0578E6386830 /* Pods-WorkshopAngela.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WorkshopAngela/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = amu.WorkshopAngela;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		70E9907F25853CE70073C7EF /* Build configuration list for PBXProject "WorkshopAngela" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70E9909725853CEA0073C7EF /* Debug */,
+				70E9909825853CEA0073C7EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		70E9909925853CEA0073C7EF /* Build configuration list for PBXNativeTarget "WorkshopAngela" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70E9909A25853CEA0073C7EF /* Debug */,
+				70E9909B25853CEA0073C7EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		70E9908E25853CE70073C7EF /* WorkshopAngela.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				70E9908F25853CE70073C7EF /* WorkshopAngela.xcdatamodel */,
+			);
+			currentVersion = 70E9908F25853CE70073C7EF /* WorkshopAngela.xcdatamodel */;
+			path = WorkshopAngela.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 70E9907C25853CE70073C7EF /* Project object */;
+}
