@@ -41,6 +41,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>/</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

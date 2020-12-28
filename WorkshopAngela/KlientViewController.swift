@@ -14,6 +14,15 @@ import Parse
 class KlientViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate {
     
     
+    var firstNames = [String]()
+    var lastNames = [String]()
+    var place = String()
+    var opis = String()
+    var datumi = [NSDate]()
+    var MajstorIds = [String]()
+    var statusi = [String]()
+    var descriptions = [String]()
+    
     @IBOutlet weak var OpisDefekt: UITextField!
     @IBOutlet weak var Izbor: UILabel!
     @IBOutlet weak var Elektricar: UIButton!
@@ -22,7 +31,7 @@ class KlientViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     @IBOutlet weak var Stolar: UIButton!
     @IBOutlet weak var Mapa: MKMapView!
     
-    var locationManager = CLLocationManager()
+    var manager = CLLocationManager()
     var locationChosen = Bool()
     
     @IBAction func LogOut(_ sender: Any) {
@@ -62,11 +71,63 @@ class KlientViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     
+    @IBAction func Request(_ sender: Any) {
+        self.performSegue(withIdentifier: "BaranjaRabotiSeg", sender: nil)
+    }
+    
     @IBAction func PrikazMajstori(_ sender: Any) {
         if !locationChosen || OpisDefekt.text == ""  || !(Izbor.text == "Moler" || Izbor.text == "Elektricar" || Izbor.text == "Vodovodzija" || Izbor.text == "Stolar"){
             DisplayAlert(title: "Nema dovolno informacii", msg: "Vnesi gi site potrebni informacii")
+        }else{
+            firstNames.removeAll()
+            lastNames.removeAll()
+            
+            opis = OpisDefekt.text!
+            let query = PFUser.query()
+            var TipMajstor = String()
+            
+            if Izbor.text == "Moler"{
+                TipMajstor = "Moler"
+            }else if Izbor.text == "Elektricar"{
+                TipMajstor = "Elektricar"
+            }else if Izbor.text == "Vodovodzija"{
+                TipMajstor = "Vodovodzija"
+            }else if Izbor.text == "Stolar"{
+                TipMajstor = "Stolar"
+            }
+            
+            query?.whereKey("TipMajstor", equalTo: TipMajstor)
+            query?.findObjectsInBackground(block: { (object, error) in
+                if error != nil{
+                    print(error?.localizedDescription)
+                }
+                else if let majstori = object{
+                    for o in majstori{
+                        if let majstor = o as? PFUser {
+                            if let firstName = majstor["firstName"]{
+                                if let lastName = majstor["lastName"]{
+                                    self.firstNames.append(firstName as! String)
+                                    self.lastNames.append(lastName as! String)
+                                }
+                            }
+                         }
+                    }
+                }
+                self.performSegue(withIdentifier: "MajstorSeg", sender: nil)
+            })
+          
         }
-        //else: segue: table view - lista majstori
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MajstorSeg" {
+            let destinationVC = segue.destination as! MajstoriTableViewController
+            destinationVC.Iminja = firstNames
+            destinationVC.Preziminja = lastNames
+            destinationVC.lokacija = place
+            destinationVC.opis = opis
+        }
     }
     
     func DisplayAlert(title: String, msg: String) {
@@ -78,26 +139,39 @@ class KlientViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Izbor.isHidden = true
+        
         locationChosen = false
         
         let uilpgr = UILongPressGestureRecognizer(target: self, action: #selector(longpress(gestureRecognizer:)))
-            uilpgr.minimumPressDuration = 2
+            uilpgr.minimumPressDuration = 1
             Mapa.addGestureRecognizer(uilpgr)
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+       // print("vlaga tukaa")
+        let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta:  0.05)
+        let region = MKCoordinateRegion(center: location, span: span)
+        self.Mapa.setRegion(region, animated: true)
+       // print("se izvrsi neso")
     }
     
     @objc func longpress(gestureRecognizer: UIGestureRecognizer) {
+        //print("Go registrira longpressot")
+        print("longpress")
         if !locationChosen{
+            print("stisnato ee")
             if gestureRecognizer.state == UIGestureRecognizer.State.began {
                 let touchPoint = gestureRecognizer.location(in: self.Mapa)
                 let newCoordinate = self.Mapa.convert(touchPoint, toCoordinateFrom: self.Mapa)
                 let newLocation = CLLocation(latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
                 var title = ""
-                
                 CLGeocoder().reverseGeocodeLocation(newLocation, completionHandler:  { (placemarks, error) in
                     if error != nil {
                         print(error!)
@@ -119,6 +193,7 @@ class KlientViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                         annotation.title = title
                         self.Mapa.addAnnotation(annotation)
                         self.locationChosen = true
+                        print(title)
 
                     }
                 })
@@ -126,13 +201,6 @@ class KlientViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             }
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta:  0.05)
-        let region = MKCoordinateRegion(center: location, span: span)
-        self.Mapa.setRegion(region, animated: true)
-        
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

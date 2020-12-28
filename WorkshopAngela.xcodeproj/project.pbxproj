@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4CB87C1932A6F3D94506EA14 /* Pods_WorkshopAngela.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D12D9BD437C6A9964AE687 /* Pods_WorkshopAngela.framework */; };
 		70E9908825853CE70073C7EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E9908725853CE70073C7EF /* AppDelegate.swift */; };
 		70E9908A25853CE70073C7EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E9908925853CE70073C7EF /* ViewController.swift */; };
 		70E9908D25853CE70073C7EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70E9908B25853CE70073C7EF /* Main.storyboard */; };
@@ -15,6 +14,17 @@
 		70E9909225853CEA0073C7EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70E9909125853CEA0073C7EF /* Assets.xcassets */; };
 		70E9909525853CEA0073C7EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70E9909325853CEA0073C7EF /* LaunchScreen.storyboard */; };
 		70F7B6A925892C6000D890FF /* KlientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F7B6A825892C6000D890FF /* KlientViewController.swift */; };
+		70FFEE3125914445007F1EED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70FFEE3025914445007F1EED /* CoreLocation.framework */; };
+		70FFEE3325929068007F1EED /* MajstoriTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FFEE3225929068007F1EED /* MajstoriTableViewController.swift */; };
+		70FFEE352592ABDE007F1EED /* MajstoriDetailsTableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FFEE342592ABDE007F1EED /* MajstoriDetailsTableViewContoller.swift */; };
+		70FFEE372592B862007F1EED /* MajstoriDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FFEE362592B862007F1EED /* MajstoriDetailsTableViewCell.swift */; };
+		70FFEE39259561EF007F1EED /* BaranjaRabotiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FFEE38259561EF007F1EED /* BaranjaRabotiTableViewController.swift */; };
+		70FFEE3B25956228007F1EED /* BaranjaRabotiDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FFEE3A25956228007F1EED /* BaranjaRabotiDetailsViewController.swift */; };
+		70FFEE3D25959CDB007F1EED /* BaranjaOdKorisniciTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FFEE3C25959CDB007F1EED /* BaranjaOdKorisniciTableViewController.swift */; };
+		70FFEE3F25994A0D007F1EED /* BaranjaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FFEE3E25994A0D007F1EED /* BaranjaDetailViewController.swift */; };
+		70FFEE4125998CFA007F1EED /* RabotiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FFEE4025998CFA007F1EED /* RabotiTableViewController.swift */; };
+		70FFEE4325998E01007F1EED /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FFEE4225998E01007F1EED /* MapViewController.swift */; };
+		70FFEE4525998EB2007F1EED /* RabotiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FFEE4425998EB2007F1EED /* RabotiDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +38,17 @@
 		70E9909425853CEA0073C7EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70E9909625853CEA0073C7EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70F7B6A825892C6000D890FF /* KlientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlientViewController.swift; sourceTree = "<group>"; };
+		70FFEE3025914445007F1EED /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		70FFEE3225929068007F1EED /* MajstoriTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajstoriTableViewController.swift; sourceTree = "<group>"; };
+		70FFEE342592ABDE007F1EED /* MajstoriDetailsTableViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajstoriDetailsTableViewContoller.swift; sourceTree = "<group>"; };
+		70FFEE362592B862007F1EED /* MajstoriDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajstoriDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		70FFEE38259561EF007F1EED /* BaranjaRabotiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaranjaRabotiTableViewController.swift; sourceTree = "<group>"; };
+		70FFEE3A25956228007F1EED /* BaranjaRabotiDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaranjaRabotiDetailsViewController.swift; sourceTree = "<group>"; };
+		70FFEE3C25959CDB007F1EED /* BaranjaOdKorisniciTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaranjaOdKorisniciTableViewController.swift; sourceTree = "<group>"; };
+		70FFEE3E25994A0D007F1EED /* BaranjaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaranjaDetailViewController.swift; sourceTree = "<group>"; };
+		70FFEE4025998CFA007F1EED /* RabotiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabotiTableViewController.swift; sourceTree = "<group>"; };
+		70FFEE4225998E01007F1EED /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		70FFEE4425998EB2007F1EED /* RabotiDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabotiDetailViewController.swift; sourceTree = "<group>"; };
 		85D12D9BD437C6A9964AE687 /* Pods_WorkshopAngela.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkshopAngela.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6673FF70A5CA19EB3AF19C /* Pods-WorkshopAngela.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkshopAngela.debug.xcconfig"; path = "Target Support Files/Pods-WorkshopAngela/Pods-WorkshopAngela.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CB87C1932A6F3D94506EA14 /* Pods_WorkshopAngela.framework in Frameworks */,
+				70FFEE3125914445007F1EED /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +68,7 @@
 		25558375A42FE44FF9ADC163 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				70FFEE3025914445007F1EED /* CoreLocation.framework */,
 				85D12D9BD437C6A9964AE687 /* Pods_WorkshopAngela.framework */,
 			);
 			name = Frameworks;
@@ -83,9 +105,19 @@
 			isa = PBXGroup;
 			children = (
 				70E9908725853CE70073C7EF /* AppDelegate.swift */,
-				70E9908925853CE70073C7EF /* ViewController.swift */,
 				70E9908B25853CE70073C7EF /* Main.storyboard */,
+				70E9908925853CE70073C7EF /* ViewController.swift */,
 				70F7B6A825892C6000D890FF /* KlientViewController.swift */,
+				70FFEE362592B862007F1EED /* MajstoriDetailsTableViewCell.swift */,
+				70FFEE3225929068007F1EED /* MajstoriTableViewController.swift */,
+				70FFEE342592ABDE007F1EED /* MajstoriDetailsTableViewContoller.swift */,
+				70FFEE38259561EF007F1EED /* BaranjaRabotiTableViewController.swift */,
+				70FFEE3A25956228007F1EED /* BaranjaRabotiDetailsViewController.swift */,
+				70FFEE3C25959CDB007F1EED /* BaranjaOdKorisniciTableViewController.swift */,
+				70FFEE3E25994A0D007F1EED /* BaranjaDetailViewController.swift */,
+				70FFEE4025998CFA007F1EED /* RabotiTableViewController.swift */,
+				70FFEE4425998EB2007F1EED /* RabotiDetailViewController.swift */,
+				70FFEE4225998E01007F1EED /* MapViewController.swift */,
 				70E9909125853CEA0073C7EF /* Assets.xcassets */,
 				70E9909325853CEA0073C7EF /* LaunchScreen.storyboard */,
 				70E9909625853CEA0073C7EF /* Info.plist */,
@@ -209,9 +241,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70FFEE39259561EF007F1EED /* BaranjaRabotiTableViewController.swift in Sources */,
 				70E9908A25853CE70073C7EF /* ViewController.swift in Sources */,
+				70FFEE4525998EB2007F1EED /* RabotiDetailViewController.swift in Sources */,
+				70FFEE4125998CFA007F1EED /* RabotiTableViewController.swift in Sources */,
+				70FFEE372592B862007F1EED /* MajstoriDetailsTableViewCell.swift in Sources */,
 				70E9908825853CE70073C7EF /* AppDelegate.swift in Sources */,
+				70FFEE352592ABDE007F1EED /* MajstoriDetailsTableViewContoller.swift in Sources */,
+				70FFEE4325998E01007F1EED /* MapViewController.swift in Sources */,
+				70FFEE3F25994A0D007F1EED /* BaranjaDetailViewController.swift in Sources */,
+				70FFEE3B25956228007F1EED /* BaranjaRabotiDetailsViewController.swift in Sources */,
+				70FFEE3325929068007F1EED /* MajstoriTableViewController.swift in Sources */,
 				70E9909025853CE70073C7EF /* WorkshopAngela.xcdatamodeld in Sources */,
+				70FFEE3D25959CDB007F1EED /* BaranjaOdKorisniciTableViewController.swift in Sources */,
 				70F7B6A925892C6000D890FF /* KlientViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

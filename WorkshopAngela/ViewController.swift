@@ -11,6 +11,7 @@ import Parse
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
+    
     @IBOutlet weak var Majstor: UILabel!
     @IBOutlet weak var MajstorOrKlient: UISwitch!
     @IBOutlet weak var Klient: UILabel!
@@ -35,6 +36,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var Izberi: UILabel!
     
     var SignUpMode = false
+    
+    var activityIndicator = UIActivityIndicatorView()
     
     @IBAction func MolerButton(_ sender: Any) {
         print("goo kliknaaav")
@@ -72,30 +75,46 @@ class ViewController: UIViewController, UITextFieldDelegate {
         Vodovodzija.isHidden = true
     }
     
-    @IBAction func Button1(_ sender: Any) {
-        if Email.text == "" || Password.text == "" || Phone.text == "" || Ime.text == "" || Prezime.text == "" {
-            DisplayAlert(title: "Error in form", msg: "You must provide all ")
+    @IBAction func KlinetOrMajstor(_ sender: Any) {
+        if MajstorOrKlient.isOn{
+            Izberi.isHidden = true
+            Izbor.isHidden = true
+            Vodovodzija.isHidden = true
+            Stolar.isHidden = true
+            Moler.isHidden = true
+            Elektricar.isHidden = true
         }else{
-            
-            let activityIndicato = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-            activityIndicato.center = view.center //da vrti vo sredina
-            activityIndicato.hidesWhenStopped = true // da se skrie koga ke bide prekinat activityindicator-or
-            activityIndicato.style = UIActivityIndicatorView.Style.gray
-            view.addSubview(activityIndicato)
-            UIApplication.shared.beginIgnoringInteractionEvents() //blokirano e klikanjeto na sekoe kopce ili pole po pritiskanje na Login/SignUp za da ne se klika bilo so dr
-            
-            
-            if SignUpMode { //sme vo SignUp
+            Izberi.isHidden = false
+            Izbor.isHidden = true
+            Vodovodzija.isHidden = false
+            Stolar.isHidden = false
+            Moler.isHidden = false
+            Elektricar.isHidden = false
+        }
+    }
+    
+    
+    @IBAction func Button1(_ sender: Any) {
+        if SignUpMode{
+            if Email.text == "" || Password.text == "" || Phone.text == "" || Ime.text == "" || Prezime.text == "" {
+                DisplayAlert(title: "Error in form", msg: "You must provide all ")
+            }else{
+                activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+                activityIndicator.center = view.center //da vrti vo sredina
+                activityIndicator.hidesWhenStopped = true // da se skrie koga ke bide prekinat activityindicator-or
+                activityIndicator.style = UIActivityIndicatorView.Style.gray
+                view.addSubview(activityIndicator)
+                UIApplication.shared.beginIgnoringInteractionEvents() //blokirano e klikanjeto na sekoe kopce ili pole po pritiskanje na Login/SignUp za da ne se klika bilo so dr
 
                 let user = PFUser()
                 user.username = Email.text
                 user.password = Password.text
                 user.email = Email.text
                 
-                user["ime"] = Ime.text
-                user["prezime"] = Prezime.text
-                user["phone"] = Phone.text
-                
+                user["firstName"] = Ime.text
+                user["lastName"] = Prezime.text
+                user["phoneNumber"] = Phone.text
+
                 
                 if MajstorOrKlient.isOn{
                     
@@ -105,12 +124,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     user["tipKorisnik"] = "Majstor"
                     
                     user["tipMajstor"] = Izbor.text
-                
+                    
                 }
                 
                 user.signUpInBackground { (succes,error) in
                     
-                    activityIndicato.stopAnimating()
+                    self.activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     
                     if let error = error{
@@ -119,45 +138,58 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     }else{
                         print("Sign Up succes")
                         
-                        if PFUser.current()!["tipKorisnik"] as! String == "Krosinik" {
+                        if PFUser.current()!["tipKorisnik"] as! String == "Klient" {
                             self.performSegue(withIdentifier: "KorisnikSeg", sender: self)
-                            print("Signed up - Korisnik")
+                            print("Signed up - Klient")
                         }else{
+                            self.performSegue(withIdentifier: "KonBaranja", sender: self)
+                            //MajstorSeg
                             print("Signed up- Majstor")
                         }
- 
+                        
                     }
                 }
-            }else{ //inaku sme vo logIn
-                if Email.text == "" || Password.text == ""{
-                    DisplayAlert(title: "Error in form", msg: "You must provide all ")
-                }else{
+
+            }
+        }else{
+            if Email.text == "" || Password.text == ""{
+                DisplayAlert(title: "Error in form", msg: "You must provide all ")
+            }else{
+                activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+                activityIndicator.center = view.center //da vrti vo sredina
+                activityIndicator.hidesWhenStopped = true // da se skrie koga ke bide prekinat activityindicator-or
+                activityIndicator.style = UIActivityIndicatorView.Style.gray
+                view.addSubview(activityIndicator)
+                UIApplication.shared.beginIgnoringInteractionEvents() //blokirano e klikanjeto na sekoe kopce ili pole po pritiskanje na Login/SignUp za da ne se klika bilo so dr
+
                 PFUser.logInWithUsername(inBackground: Email.text! , password: Password.text!) { (user,error) in
                     
-                    activityIndicato.stopAnimating()
+                    self.activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
-                    
                     if let error = error{
                         let errorString = error.localizedDescription
                         self.DisplayAlert(title: "Error", msg: errorString)
                     }else{
                         print("LogIn succes")
                         
-                        if user!["tipKorisnik"] as! String == "Krosinik" {
+                        if user!["tipKorisnik"] as! String == "Klient" {
                             self.performSegue(withIdentifier: "KorisnikSeg", sender: self)
                             print("Logged In - Korisnik")
                         }else{
+                            self.performSegue(withIdentifier: "KonBaranja", sender: self)
                             print("Logged In- Majstor")
                         }
-                        
+
                     }
+                    
                 }
-            }
             }
         }
     }
-    
+
+ 
     @IBAction func SwitchButton(_ sender: Any) {
+        
         if SignUpMode {
             SignUpMode = false
             LoginOrSignup.setTitle("Login", for: .normal)
@@ -172,7 +204,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             Stolar.isHidden = true
             Moler.isHidden = true
             Elektricar.isHidden = true
-            
+            MajstorOrKlient.isHidden = true
+            Majstor.isHidden = true
+            Klient.isHidden = true
         }else{
             SignUpMode = true
             LoginOrSignup.setTitle("Sign Up", for: .normal)
@@ -180,6 +214,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             Ime.isHidden = false
             Prezime.isHidden = false
             Phone.isHidden = false
+            MajstorOrKlient.isHidden = false
+            Majstor.isHidden = false
+            Klient.isHidden = false
             
             if MajstorOrKlient.isOn{
                 Izberi.isHidden = true
@@ -220,29 +257,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
             Stolar.isHidden = true
             Moler.isHidden = true
             Elektricar.isHidden = true
+            
+            MajstorOrKlient.isHidden = true
+            Majstor.isHidden = true
+            Klient.isHidden = true
         }else{
             Ime.isHidden = false
             Prezime.isHidden = false
             Phone.isHidden = false
+            MajstorOrKlient.isHidden = false
+            Majstor.isHidden = false
+            Klient.isHidden = false
             
         }
-
-        if MajstorOrKlient.isOn{
-            Izberi.isHidden = true
-            Izbor.isHidden = true
-            Vodovodzija.isHidden = true
-            Stolar.isHidden = true
-            Moler.isHidden = true
-            Elektricar.isHidden = true
-        }else{
-            Izberi.isHidden = false
-            Izbor.isHidden = true
-            Vodovodzija.isHidden = false
-            Stolar.isHidden = false
-            Moler.isHidden = false
-            Elektricar.isHidden = false
-        }
-
+        
     }
     
     
@@ -252,8 +280,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidLoad() {
+        //print("START")
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        if PFUser.current() != nil {
+            if PFUser.current()!["tipKorisnik"] as! String == "Klient" {
+                performSegue(withIdentifier: "KorisnikSeg", sender: self)
+            }else{
+                performSegue(withIdentifier: "KonBaranja", sender: self)
+            }
+        }
         
     }
     
