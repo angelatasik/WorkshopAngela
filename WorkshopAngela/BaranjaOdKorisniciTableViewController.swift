@@ -8,9 +8,12 @@
 
 import UIKit
 import Parse
+import MapKit
+import CoreLocation
 
-class BaranjaOdKorisniciTableViewController: UITableViewController {
+class BaranjaOdKorisniciTableViewController: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
+    let locationManager = CLLocationManager()
     
     var Iminja = [String]()
     var Preziminja = [String]()
@@ -22,6 +25,8 @@ class BaranjaOdKorisniciTableViewController: UITableViewController {
     var longitudes = [Double]()
     var latitudes = [Double]()
     var index = Int()
+    var currLat = Double()
+    var currLong = Double()
     
     var refresher:UIRefreshControl = UIRefreshControl()
     
@@ -38,6 +43,13 @@ class BaranjaOdKorisniciTableViewController: UITableViewController {
         refresher.addTarget(self, action: #selector(BaranjaOdKorisniciTableViewController.updateTable)
             , for: UIControl.Event.valueChanged)
         self.view.addSubview(refresher)
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
     }
     
     @objc func updateTable() {
@@ -50,6 +62,7 @@ class BaranjaOdKorisniciTableViewController: UITableViewController {
         latitudes.removeAll()
         phones.removeAll()
         lokacii.removeAll()
+       
         
         let query = PFQuery(className: "Job")
         query.whereKey("to", equalTo: PFUser.current()?.objectId)

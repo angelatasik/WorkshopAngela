@@ -18,6 +18,8 @@ class BaranjaRabotiTableViewController: UITableViewController {
     var descriptions = [String]()
     var datumPonuda = [NSDate]()
     var cenaPonuda = [String]()
+    var DatumZavrsuvanje = [NSDate?]()
+    var image = [PFFileObject?]()
     
     var refresher: UIRefreshControl = UIRefreshControl()
 
@@ -45,6 +47,10 @@ class BaranjaRabotiTableViewController: UITableViewController {
         MajstoriIds.removeAll()
         statusi.removeAll()
         descriptions.removeAll()
+        image.removeAll()
+        DatumZavrsuvanje.removeAll()
+        datumPonuda.removeAll()
+        cenaPonuda.removeAll()
         
         let query = PFQuery(className: "Job")
         query.whereKey("from", equalTo: PFUser.current()?.objectId)
@@ -67,6 +73,18 @@ class BaranjaRabotiTableViewController: UITableViewController {
                                             self.cenaPonuda.append(Price as! String)
                                             self.datumPonuda.append(DateTime as! NSDate)
                                         }
+                                    }else{
+                                        self.datumPonuda.append(NSDate())
+                                        self.cenaPonuda.append("<#T##newElement: String##String#>")
+                                    }
+                                    if let fDate = object["finishDate"]{
+                                        if let imageFile = object["imageFile"]{
+                                            self.DatumZavrsuvanje.append(fDate as! NSDate)
+                                            self.image.append(imageFile as! PFFileObject)
+                                        }
+                                    }else {
+                                        self.DatumZavrsuvanje.append(nil)
+                                        self.image.append(nil)
                                     }
                                 }
                                 
@@ -135,9 +153,14 @@ class BaranjaRabotiTableViewController: UITableViewController {
             destinationVC.opis = descriptions[index]
             destinationVC.dataReq = datumii[index]
             destinationVC.status = statusi[index]
-            if datumPonuda.count > 0 {
+            if statusi[index] == "pending"{
                 destinationVC.DatumPonuda = datumPonuda[index]
                 destinationVC.CenaPonuda = cenaPonuda[index]
+            }else if statusi[index] == "scheduled" {
+                destinationVC.DatumPonuda = datumPonuda[index]
+            }else if statusi[index] == "done" {
+                destinationVC.imageFile.append(image[index]!)
+                destinationVC.dateFinished = DatumZavrsuvanje[index]!
             }
         }
     }

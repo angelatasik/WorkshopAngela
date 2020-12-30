@@ -18,9 +18,29 @@ class MajstoriDetailsTableViewContoller: UITableViewController {
     var lokacija = String()
     var lon = Double()
     var lat = Double()
+    var ime = String()
+    var Prezime = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData()
+        let craftsmanQuery = PFUser.query()
+        craftsmanQuery?.whereKey("tipKorisnik", equalTo: "Majstor")
+        craftsmanQuery?.whereKey("firstName", equalTo: ime)
+        craftsmanQuery?.whereKey("lastName", equalTo: Prezime)
+        craftsmanQuery?.findObjectsInBackground(block: { (objects, error) in
+            if error != nil {
+                print(error?.localizedDescription)
+            } else if let object = objects {
+                for obj in object {
+                    if let o = obj as? PFUser {
+                        if let objectId = o.objectId {
+                            self.MajstorId = objectId
+                        }
+                    }
+                }
+            }
+        })
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,7 +69,7 @@ class MajstoriDetailsTableViewContoller: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let stringDate = dateFormatter.string(from: dates[indexPath.row] as Date)
-        
+        //cell.dateFinished.text = stringDate
         return cell
     }
     
@@ -62,6 +82,8 @@ class MajstoriDetailsTableViewContoller: UITableViewController {
         request["status"] = "active"
         request["description"] = opis
         request["location"] = lokacija
+        request["lon"] = lon
+        request["lat"] = lat
         request.saveInBackground() { (succes,error) in
             if succes {
                 self.displayAlert(title: "Uspesno", message: "Make a request")
@@ -77,4 +99,42 @@ class MajstoriDetailsTableViewContoller: UITableViewController {
         present(allertContoller,animated: true,completion: nil)
     }
     
+    func fetchData(){
+        self.imageFiles.removeAll()
+        self.dates.removeAll()
+        let craftsmanQuery = PFUser.query()
+        craftsmanQuery?.whereKey("tipKorisnik", equalTo: "Majstor")
+        craftsmanQuery?.whereKey("firstName", equalTo: ime)
+        craftsmanQuery?.whereKey("lastName", equalTo: Prezime)
+        craftsmanQuery?.findObjectsInBackground(block: { (objects, error) in
+            if error != nil {
+                print(error?.localizedDescription)
+            } else if let object = objects {
+                for obj in object {
+                    if let o = obj as? PFUser {
+                        if let objectId = o.objectId {
+                            let query = PFQuery(className: "Job")
+                            query.whereKey("to", equalTo: objectId)
+                            query.whereKey("status", equalTo: "done")
+                            query.findObjectsInBackground(block: { (jobs, error) in
+                                if error != nil {
+                                    print(error?.localizedDescription)
+                                } else if let jobs = jobs {
+                                    for job in jobs {
+                                        if let datum = job["finishDate"] {
+                                            if let slika = job["imageFile"] {
+                                                self.dates.append(datum as! NSDate)
+                                                self.imageFiles.append(slika as! PFFileObject)
+                                            }
+                                        }
+                                    }
+                                }
+                                self.tableView.reloadData()
+                            })
+                        }
+                    }
+                }
+            }
+        })
+    }
 }
