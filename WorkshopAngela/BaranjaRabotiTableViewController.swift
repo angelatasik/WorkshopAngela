@@ -43,6 +43,7 @@ class BaranjaRabotiTableViewController: UITableViewController {
     }
 
     @objc func updateTable() {
+        print("Ja update-ira tabelata")
         datumii.removeAll()
         MajstoriIds.removeAll()
         statusi.removeAll()
@@ -53,32 +54,37 @@ class BaranjaRabotiTableViewController: UITableViewController {
         cenaPonuda.removeAll()
         
         let query = PFQuery(className: "Job")
+        print("kreira query")
         query.whereKey("from", equalTo: PFUser.current()?.objectId)
         query.addDescendingOrder("date")
         query.findObjectsInBackground(block: { (objects, error) in
             if error != nil {
                 print(error?.localizedDescription)
-            }else if let objects = objects {
-                for object in objects {
-                    if let datumB = object["date"] {
-                        if let status = object["status"]{
-                            if let MajstorId = object["to"]{
-                                if let desc = object["description"]{
+            }else if let object = objects {
+                for obj in object {
+                    print("niz objektot")
+                    if let datumB = obj["date"] {
+                        print(datumB)
+                        if let status = obj["status"]{
+                            if let MajstorId = obj["to"]{
+                                print(MajstorId)
+                                if let desc = obj["description"]{
+                                    print(desc)
                                     self.datumii.append(datumB as! NSDate)
                                     self.MajstoriIds.append(MajstorId as! String)
                                     self.statusi.append(status as! String)
                                     self.descriptions.append(desc as! String)
-                                    if let DateTime = object["DateTime"] {
-                                        if let Price = object["Price"] {
+                                    if let DateTime = obj["DateTime"] {
+                                        if let Price = obj["Price"] {
                                             self.cenaPonuda.append(Price as! String)
                                             self.datumPonuda.append(DateTime as! NSDate)
                                         }
                                     }else{
                                         self.datumPonuda.append(NSDate())
-                                        self.cenaPonuda.append("<#T##newElement: String##String#>")
+                                        self.cenaPonuda.append("")
                                     }
-                                    if let fDate = object["finishDate"]{
-                                        if let imageFile = object["imageFile"]{
+                                    if let fDate = obj["finishDate"]{
+                                        if let imageFile = obj["imageFile"]{
                                             self.DatumZavrsuvanje.append(fDate as! NSDate)
                                             self.image.append(imageFile as! PFFileObject)
                                         }

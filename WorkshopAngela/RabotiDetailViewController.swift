@@ -23,7 +23,7 @@ extension UIImage {
     }
 }
 
-class RabotiDetailViewController: UIViewController {
+class RabotiDetailViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var datum = NSDate()
     var status = String()
@@ -39,17 +39,17 @@ class RabotiDetailViewController: UIViewController {
     var datePicker = NSDate()
     var DatumZavrsuvanje = NSDate()
     
-    @IBOutlet weak var Adresa: UILabel!
+    
+    @IBOutlet weak var Korisnik: UILabel!
     @IBOutlet weak var Data: UILabel!
+    @IBOutlet weak var Status: UILabel!
+    @IBOutlet weak var Adresa: UILabel!
+    @IBOutlet weak var Phone: UILabel!
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var DatePicker: UIDatePicker!
-    @IBOutlet weak var Status: UILabel!
-    @IBOutlet weak var Korisnik: UILabel!
-    @IBOutlet weak var Phone: UILabel!
     @IBOutlet weak var Email: UILabel!
     @IBOutlet weak var PhotoLibrary: UIButton!
     @IBOutlet weak var Camera: UIButton!
-    @IBOutlet weak var Or: UILabel!
     @IBOutlet weak var FinishDate: UILabel!
     @IBOutlet weak var SaveImage: UIButton!
     @IBOutlet weak var DateFinish: UILabel!
@@ -72,8 +72,10 @@ class RabotiDetailViewController: UIViewController {
     
     @IBAction func PhotoLibraryPressed(_ sender: Any) {
         let imagePicker = UIImagePickerController()
+        print("ovde vlaga")
         imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        print("i ovde")
+        imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -134,7 +136,7 @@ class RabotiDetailViewController: UIViewController {
             FinishDate.isHidden = true
             DateFinish.isHidden = true
             Camera.isHidden = false
-            Or.isHidden = false
+            //Or.isHidden = false
             PhotoLibrary.isHidden = false
             SaveImage.isHidden = false
             DatePicker.datePickerMode = .date
@@ -148,7 +150,7 @@ class RabotiDetailViewController: UIViewController {
             FinishDate.text = StringDate
             FinishDate.isHidden = false
             Camera.isHidden = true
-            Or.isHidden = true
+            //Or.isHidden = true
             PhotoLibrary.isHidden = true
             SaveImage.isHidden = true
             VnesiSlika.isHidden = true

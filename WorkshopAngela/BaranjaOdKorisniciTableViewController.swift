@@ -65,6 +65,7 @@ class BaranjaOdKorisniciTableViewController: UITableViewController, CLLocationMa
        
         
         let query = PFQuery(className: "Job")
+        print("se kreira query")
         query.whereKey("to", equalTo: PFUser.current()?.objectId)
         query.whereKey("status", equalTo: "active")
         query.addDescendingOrder("date")
@@ -73,24 +74,32 @@ class BaranjaOdKorisniciTableViewController: UITableViewController, CLLocationMa
                 print(error?.localizedDescription)
             }else if let obj = objects {
                 for object in obj {
+                    print("vlaga vo for-ot")
                     if let userId = object["from"] {
                         if let datum = object["date"]{
                             if let lokacija = object["location"]{
                                 if let opis = object["description"]{
+                                    print(opis)
                                     if let lat = object["lat"]{
                                         if let long = object["lon"]{
                                             let userQuery = PFUser.query()
+                                            print("kreiraa i tukaaa query")
                                             userQuery?.whereKey("objectId", equalTo: userId)
                                             userQuery?.findObjectsInBackground(block: { (users, error) in
                                                 if error != nil {
                                                     print(error?.localizedDescription)
                                                 }else if let userss = users{
                                                     for user in userss{
-                                                        if let user = user as? PFUser {
-                                                            if let fName = user["firstName"]{
-                                                                if let lName = user["lastName"]{
-                                                                    if let pNubmer = user["phoneNumber"]{
-                                                                        if let email = user.username{
+                                                        print("vlaga i vo ovoj for")
+                                                        if let u = user as? PFUser {
+                                                            print("i tuka vlaga")
+                                                            print(u)
+                                                            if let fName = u["firstName"]{
+                                                                print(fName)
+                                                                if let lName = u["lastName"]{
+                                                                    print(lName)
+                                                                    if let pNubmer = u["phoneNumber"]{
+                                                                        if let email = u.username{
                                                                             self.Iminja.append(fName as! String)
                                                                             self.Preziminja.append(lName as! String)
                                                                             self.phones.append(pNubmer as! String)

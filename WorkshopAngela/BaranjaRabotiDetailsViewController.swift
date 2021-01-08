@@ -56,10 +56,11 @@ class BaranjaRabotiDetailsViewController: UIViewController {
                 for o in obj {
                     o["status"] = "scheduled"
                     o.saveInBackground()
+                    self.displayAlert(title: "Success" , message: "The job is now scheduled")
                 }
             }
         })
-        displayAlert(title: "Success" , message: "The job is now scheduled")
+        
     }
     
     

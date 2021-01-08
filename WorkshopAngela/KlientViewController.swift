@@ -19,6 +19,9 @@ class KlientViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     var place = String()
     var opis = String()
     var datumi = [NSDate]()
+    var lat = Double()
+    var long = Double()
+    
     var MajstorIds = [String]()
     var statusi = [String]()
     var descriptions = [String]()
@@ -79,6 +82,7 @@ class KlientViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         if !locationChosen || OpisDefekt.text == ""  || !(Izbor.text == "Moler" || Izbor.text == "Elektricar" || Izbor.text == "Vodovodzija" || Izbor.text == "Stolar"){
             DisplayAlert(title: "Nema dovolno informacii", msg: "Vnesi gi site potrebni informacii")
         }else{
+            print("vlaga vo prikaz na majstori")
             firstNames.removeAll()
             lastNames.removeAll()
             
@@ -96,7 +100,8 @@ class KlientViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                 TipMajstor = "Stolar"
             }
             
-            query?.whereKey("TipMajstor", equalTo: TipMajstor)
+            query?.whereKey("tipMajstor", equalTo: TipMajstor)
+            print("kreira query")
             query?.findObjectsInBackground(block: { (object, error) in
                 if error != nil{
                     print(error?.localizedDescription)
@@ -104,10 +109,13 @@ class KlientViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                 else if let majstori = object{
                     for o in majstori{
                         if let majstor = o as? PFUser {
+                            print("pocnuva da zima od objektot")
                             if let firstName = majstor["firstName"]{
                                 if let lastName = majstor["lastName"]{
+                                    print("gi stava")
                                     self.firstNames.append(firstName as! String)
                                     self.lastNames.append(lastName as! String)
+                                    print("gi stavi")
                                 }
                             }
                          }
@@ -127,6 +135,8 @@ class KlientViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             destinationVC.Preziminja = lastNames
             destinationVC.lokacija = place
             destinationVC.opis = opis
+            destinationVC.lon = long
+            destinationVC.lat = lat
         }
     }
     
@@ -200,6 +210,7 @@ class KlientViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             }
             }
     }
+    
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

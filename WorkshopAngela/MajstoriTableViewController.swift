@@ -46,13 +46,17 @@ class MajstoriTableViewController: UITableViewController {
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        MajstorId.removeAll()
         let cell = tableView.dequeueReusableCell(withIdentifier: "Kelija", for: indexPath)
         cell.textLabel?.text = Iminja[indexPath.row] + " " + Preziminja[indexPath.row]
         let DefektLokacija = CLLocation(latitude: lat, longitude: lon)
         let firstName = Iminja[indexPath.row]
         let lastName = Preziminja[indexPath.row]
+        //print(firstName)
+        //print(lastName)
         //SET UP OUR QUERY FOR A USER OBJ:
         let MajstorQuery = PFUser.query()
+        //print("go kreira QUERYTO")
         MajstorQuery?.whereKey("tipKorisnik", equalTo: "Majstor")
         MajstorQuery?.whereKey("firstName", equalTo: firstName)
         MajstorQuery?.whereKey("lastName", equalTo: lastName)
@@ -61,6 +65,7 @@ class MajstoriTableViewController: UITableViewController {
             if error != nil {
                 print(error?.localizedDescription)
             }else if let majstori = objects {
+                //print("VLAGAA")
                 for object in majstori {
                     if let majstor = object as? PFUser {
                         if let objectID = majstor.objectId {
@@ -77,8 +82,8 @@ class MajstoriTableViewController: UITableViewController {
                                     query.findObjectsInBackground(block: { (objects, error) in
                                         if error != nil {
                                             print(error?.localizedDescription)
-                                        } else if let objects = objects {
-                                            if objects.count > 0 {
+                                        } else if let object = objects {
+                                            if object.count > 0 {
                                                 cell.accessoryType = UITableViewCell.AccessoryType.checkmark
                                             }
                                         }
@@ -98,11 +103,12 @@ class MajstoriTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         index = indexPath.row
-        performSegue(withIdentifier: "MajstoriDetailSeq", sender: nil)
+        performSegue(withIdentifier: "MajstoriDetailSeg", sender: nil)
+       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "MajstoriDetailSeg"{
+        if segue.identifier == "MajstoriDetailSeg" {
             let destinationVC = segue.destination as! MajstoriDetailsTableViewContoller
             destinationVC.lokacija = lokacija
             destinationVC.opis = opis
