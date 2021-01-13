@@ -28,15 +28,15 @@ class BaranjaRabotiDetailsViewController: UIViewController {
     @IBOutlet weak var Email: UILabel!
     @IBOutlet weak var Phone: UILabel!
     @IBOutlet weak var Status: UILabel!
-    @IBOutlet weak var CenaP: UILabel!
     @IBOutlet weak var Cena: UILabel!
-    @IBOutlet weak var DatumP: UILabel!
+    @IBOutlet weak var CenaP: UILabel!
     @IBOutlet weak var Datum: UILabel!
+    @IBOutlet weak var DatumP: UILabel!
+    @IBOutlet weak var Prifati: UIButton!
+    @IBOutlet weak var Odbij: UIButton!
     @IBOutlet weak var Zakazano: UILabel!
     @IBOutlet weak var DatumZakazano: UILabel!
     @IBOutlet weak var Image: UIImageView!
-    @IBOutlet weak var Prifati: UIButton!
-    @IBOutlet weak var Odbij: UIButton!
     
     var datumi = [NSDate]()
     var MajstoriIds = [String]()
@@ -60,9 +60,7 @@ class BaranjaRabotiDetailsViewController: UIViewController {
                 }
             }
         })
-        
     }
-    
     
     @IBAction func Odbivanje(_ sender: Any) {
         let query = PFQuery(className: "Job")
@@ -114,7 +112,7 @@ class BaranjaRabotiDetailsViewController: UIViewController {
                                 if let phoneNumber = majstor["phoneNumber"]{
                                     if let email = majstor.username {
                                         if let tip = majstor["tipMajstor"]{
-                                            self.ImePrezime.text = (firsName as! String)
+                                            self.ImePrezime.text = (firsName as! String) + " " + (lastNAme as! String)
                                             self.TipMajstor.text = (tip as! String)
                                             self.Email.text = email
                                             self.Phone.text = (phoneNumber as! String)
@@ -168,12 +166,13 @@ class BaranjaRabotiDetailsViewController: UIViewController {
             Datum.isHidden = true
             DatumZakazano.isHidden = false
             Zakazano.isHidden = false
+            Zakazano.text = "Zakazano na:"
             Image.isHidden = true
             Prifati.isHidden = true
             Odbij.isHidden = true
         }else if status == "done" { //zavrsena rabota
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+            dateFormatter.dateFormat = "dd/MM/yyyy"
             let StringDate = dateFormatter.string(from: dateFinished as Date)
             DatumZakazano.text = StringDate
             let slika = imageFile[0]
@@ -189,7 +188,7 @@ class BaranjaRabotiDetailsViewController: UIViewController {
             CenaP.isHidden = true
             DatumP.isHidden = true
             Datum.isHidden = true
-            DatumZakazano.text = "Done on: "
+            Zakazano.text = "Zavrseno na: "
             DatumZakazano.isHidden = false
             Zakazano.isHidden = false
             Image.isHidden = false

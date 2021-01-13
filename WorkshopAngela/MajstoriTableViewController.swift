@@ -15,8 +15,6 @@ class MajstoriTableViewController: UITableViewController {
 
     var Iminja = [String]()
     var Preziminja = [String]()
-    //var dates = [NSDate]()
-    //var images = [PFFileObject]()
     var kliknatMajstor = String()
     var opis = String()
     var lokacija = String()
@@ -56,7 +54,7 @@ class MajstoriTableViewController: UITableViewController {
         //print(lastName)
         //SET UP OUR QUERY FOR A USER OBJ:
         let MajstorQuery = PFUser.query()
-        //print("go kreira QUERYTO")
+        print("go kreira QUERYTO")
         MajstorQuery?.whereKey("tipKorisnik", equalTo: "Majstor")
         MajstorQuery?.whereKey("firstName", equalTo: firstName)
         MajstorQuery?.whereKey("lastName", equalTo: lastName)
@@ -65,26 +63,34 @@ class MajstoriTableViewController: UITableViewController {
             if error != nil {
                 print(error?.localizedDescription)
             }else if let majstori = objects {
-                //print("VLAGAA")
+                print("VLAGAA")
                 for object in majstori {
                     if let majstor = object as? PFUser {
                         if let objectID = majstor.objectId {
+                            print("I TUKA VLAGA")
                             if let currentLat = majstor["currentLat"] {
-                                if let currentLong = majstor["currentLong"]{
+                                print("ja zema currentLat")
+                                //print(currentLat)
+                                if let currentLong = majstor["currentLon"]{
                                     let MajstorLocation = CLLocation(latitude: currentLat as! Double, longitude: currentLong as! Double)
                                     let distance = MajstorLocation.distance(from: DefektLokacija) / 1000
                                     let roundedDistance = round(distance * 100) / 100
                                     cell.detailTextLabel?.text = "\(roundedDistance)km away"
                                     let query = PFQuery(className: "Job")
+                                    print("VLAGA VO QUERY-TO: JOB")
                                     query.whereKey("from", equalTo: PFUser.current()?.objectId)
                                     query.whereKey("to", equalTo: objectID)
                                     query.whereKey("status", equalTo: "active")
+                                    print("gi prvoeri i from,to,status")
                                     query.findObjectsInBackground(block: { (objects, error) in
                                         if error != nil {
                                             print(error?.localizedDescription)
                                         } else if let object = objects {
+                                            print("vlaga i tuka")
                                             if object.count > 0 {
+                                                print("count e > 0")
                                                 cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+                                                print("go izvrsi ova?")
                                             }
                                         }
                                     })

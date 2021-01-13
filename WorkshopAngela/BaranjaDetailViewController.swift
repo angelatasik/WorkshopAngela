@@ -54,7 +54,6 @@ class BaranjaDetailViewController: UIViewController {
         
     }
     
-    
     @IBAction func Isprati(_ sender: Any) {
         if Cena.text == " " {
             displayAlert(title: "Nevalidno", message: "Vnesi cena")
@@ -98,8 +97,6 @@ class BaranjaDetailViewController: UIViewController {
         }
     }
     
-    
-    
     @IBAction func Odbij(_ sender: Any) {
         let query = PFUser.query()
         query?.whereKey("firstName", equalTo: Ime)
@@ -133,7 +130,7 @@ class BaranjaDetailViewController: UIViewController {
         })
         displayAlert(title: "Uspesno", message: "Go odbivte baranjeto")
     }
-    
+   
     
     func displayAlert(title: String, message: String) {
         let alertC = UIAlertController(title: title, message: message, preferredStyle: .alert)

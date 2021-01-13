@@ -52,6 +52,14 @@ class BaranjaOdKorisniciTableViewController: UITableViewController, CLLocationMa
         }
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currLat = locations[0].coordinate.latitude
+        currLong = locations[0].coordinate.longitude
+        PFUser.current()!["currentLat"] = currLat
+        PFUser.current()!["currentLon"] = currLong
+        PFUser.current()?.saveInBackground()
+    }
+    
     @objc func updateTable() {
         Iminja.removeAll()
         Preziminja.removeAll()
@@ -77,23 +85,19 @@ class BaranjaOdKorisniciTableViewController: UITableViewController, CLLocationMa
                     print("vlaga vo for-ot")
                     if let userId = object["from"] {
                         if let datum = object["date"]{
-                            if let lokacija = object["location"]{
-                                if let opis = object["description"]{
-                                    print(opis)
+                            if let opis = object["description"]{
+                                if let lokacija = object["location"]{
                                     if let lat = object["lat"]{
                                         if let long = object["lon"]{
                                             let userQuery = PFUser.query()
-                                            print("kreiraa i tukaaa query")
                                             userQuery?.whereKey("objectId", equalTo: userId)
                                             userQuery?.findObjectsInBackground(block: { (users, error) in
                                                 if error != nil {
                                                     print(error?.localizedDescription)
                                                 }else if let userss = users{
                                                     for user in userss{
-                                                        print("vlaga i vo ovoj for")
                                                         if let u = user as? PFUser {
-                                                            print("i tuka vlaga")
-                                                            print(u)
+                                                            //print(u)
                                                             if let fName = u["firstName"]{
                                                                 print(fName)
                                                                 if let lName = u["lastName"]{

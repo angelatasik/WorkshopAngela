@@ -53,7 +53,7 @@ class RabotiTableViewController: UITableViewController {
         let array = ["done", "scheduled"]
         let predicate = NSPredicate(format: "status = %@ OR status = %@", argumentArray: array)
         let query = PFQuery(className: "Job", predicate: predicate)
-        print("kreiravme query vo RabotiTableViewCont")
+        //print("kreiravme query vo RabotiTableViewCont")
         query.whereKey("to", equalTo: PFUser.current()?.objectId)
         query.addDescendingOrder("DateTime")
         query.findObjectsInBackground { (objects, error) in
@@ -61,9 +61,9 @@ class RabotiTableViewController: UITableViewController {
                 print(error?.localizedDescription)
             } else if let object = objects {
                 for obj in object {
-                    print("vlaga vo forot")
+                    //print("vlaga vo forot")
                     if let status = obj["status"] {
-                        print(status)
+                        //print(status)
                         if let date = obj["DateTime"] {
                             if let adresa = obj["location"] {
                                 if let lat = obj["lat"] {

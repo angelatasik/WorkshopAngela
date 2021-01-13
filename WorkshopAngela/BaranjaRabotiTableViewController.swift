@@ -43,7 +43,7 @@ class BaranjaRabotiTableViewController: UITableViewController {
     }
 
     @objc func updateTable() {
-        print("Ja update-ira tabelata")
+        //print("Ja update-ira tabelata")
         datumii.removeAll()
         MajstoriIds.removeAll()
         statusi.removeAll()
@@ -54,7 +54,7 @@ class BaranjaRabotiTableViewController: UITableViewController {
         cenaPonuda.removeAll()
         
         let query = PFQuery(className: "Job")
-        print("kreira query")
+        //print("kreira query")
         query.whereKey("from", equalTo: PFUser.current()?.objectId)
         query.addDescendingOrder("date")
         query.findObjectsInBackground(block: { (objects, error) in
@@ -62,9 +62,9 @@ class BaranjaRabotiTableViewController: UITableViewController {
                 print(error?.localizedDescription)
             }else if let object = objects {
                 for obj in object {
-                    print("niz objektot")
+                    //print("niz objektot")
                     if let datumB = obj["date"] {
-                        print(datumB)
+                        //print(datumB)
                         if let status = obj["status"]{
                             if let MajstorId = obj["to"]{
                                 print(MajstorId)

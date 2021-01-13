@@ -40,19 +40,21 @@ class RabotiDetailViewController: UIViewController, UINavigationControllerDelega
     var DatumZavrsuvanje = NSDate()
     
     
+    
+    
+    @IBOutlet weak var DateFinish: UILabel!
     @IBOutlet weak var Korisnik: UILabel!
-    @IBOutlet weak var Data: UILabel!
     @IBOutlet weak var Status: UILabel!
-    @IBOutlet weak var Adresa: UILabel!
+    @IBOutlet weak var Email: UILabel!
+    @IBOutlet weak var FinishDate: UILabel!
+    @IBOutlet weak var Data: UILabel!
     @IBOutlet weak var Phone: UILabel!
+    @IBOutlet weak var Adresa: UILabel!
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var DatePicker: UIDatePicker!
-    @IBOutlet weak var Email: UILabel!
     @IBOutlet weak var PhotoLibrary: UIButton!
     @IBOutlet weak var Camera: UIButton!
-    @IBOutlet weak var FinishDate: UILabel!
     @IBOutlet weak var SaveImage: UIButton!
-    @IBOutlet weak var DateFinish: UILabel!
     @IBOutlet weak var VnesiSlika: UILabel!
     
     
@@ -72,9 +74,9 @@ class RabotiDetailViewController: UIViewController, UINavigationControllerDelega
     
     @IBAction func PhotoLibraryPressed(_ sender: Any) {
         let imagePicker = UIImagePickerController()
-        print("ovde vlaga")
+        //print("ovde vlaga")
         imagePicker.sourceType = .photoLibrary
-        print("i ovde")
+        //print("i ovde")
         imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
     }
@@ -122,7 +124,7 @@ class RabotiDetailViewController: UIViewController, UINavigationControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Korisnik.text = Ime + "" + Prezime
+        Korisnik.text = Ime + " " + Prezime
         Status.text = status
         Phone.text = phone
         Email.text = email

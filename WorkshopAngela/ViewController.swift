@@ -136,7 +136,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         let errorString = error.localizedDescription
                         self.DisplayAlert(title: "Error", msg: errorString)
                     }else{
-                        print("Sign Up succes")
+                        //print("Sign Up succes")
                         
                         if PFUser.current()!["tipKorisnik"] as! String == "Klient" {
                             self.performSegue(withIdentifier: "KorisnikSeg", sender: self)
@@ -144,7 +144,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         }else{
                             self.performSegue(withIdentifier: "KonBaranja", sender: self)
                             //MajstorSeg
-                            print("Signed up- Majstor")
+                            //print("Signed up- Majstor")
                         }
                         
                     }
@@ -170,14 +170,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         let errorString = error.localizedDescription
                         self.DisplayAlert(title: "Error", msg: errorString)
                     }else{
-                        print("LogIn succes")
+                        //print("LogIn succes")
                         
                         if user!["tipKorisnik"] as! String == "Klient" {
                             self.performSegue(withIdentifier: "KorisnikSeg", sender: self)
-                            print("Logged In - Korisnik")
-                        }else{
+                            //print("Logged In - Korisnik")
+                        }else if user!["tipKorisnik"] as! String == "Majstor" {
                             self.performSegue(withIdentifier: "KonBaranja", sender: self)
-                            print("Logged In- Majstor")
+                            //print("Logged In- Majstor")
                         }
 
                     }
@@ -280,16 +280,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidLoad() {
-        //print("START")
         super.viewDidLoad()
-        if PFUser.current() != nil {
-            if PFUser.current()!["tipKorisnik"] as! String == "Klient" {
-                performSegue(withIdentifier: "KorisnikSeg", sender: self)
-            }else{
-                performSegue(withIdentifier: "KonBaranja", sender: self)
-            }
-        }
-        
     }
     
 
